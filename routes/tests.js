@@ -9,6 +9,7 @@ const db = require('../db');
 //first route connecting to DB!
 testRouter.get('/db',(req, res) => {
    queryStatement = 'SELECT * FROM cars;'; 
+//    console.log(process.env['DB_USER'])
     db.query(queryStatement, (error, results) =>{
         if (error){
             res.status(500).json(error)
