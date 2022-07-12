@@ -21,8 +21,22 @@ carRouter.get('/all', (req,res) => {
         res.status(403).json({ "forbidden":"PLease log in to continue"})
         // console.log(" header 'admin' is not true  - not authorized")
     }
-    
 })
+
+carRouter.get('/:carId', (req,res) => {
+    queryStatement = `SELECT * FROM cars WHERE car_id = '${req.params.carId}';`
+    console.log(queryStatement)
+
+    db.query(queryStatement, (error, results) =>{
+        if (error){
+            res.status(500).json(error) 
+        }
+        res.status(200).json(results.rows)
+    } )
+   
+})
+
+
 
 
 // ------- ---------- ------------
