@@ -27,16 +27,16 @@ testRouter.get('/async',(req, res) => {
      db.query(queryStatement, (error, results) =>{
          if (error){
              res.status(500).json(error)
-             result = error
+             
          }
          result = results.rows
          console.log("inside query", result)
-        //  res.status(200).json(results.rows)
+         res.status(200).json(results.rows)
         
      } )
      
      console.log("after query", result)
-     res.status(200).json(result)
+    
  })
 
 
