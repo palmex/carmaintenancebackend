@@ -19,6 +19,26 @@ testRouter.get('/db',(req, res) => {
 
 })
 
+testRouter.get('/async',(req, res) => {
+    queryStatement = 'SELECT * FROM cars;'; 
+    console.log('request', req.url)
+    var result = ""
+    console.log("before query", result)
+     db.query(queryStatement, (error, results) =>{
+         if (error){
+             res.status(500).json(error)
+             result = error
+         }
+         result = results.rows
+         console.log("inside query", result)
+        //  res.status(200).json(results.rows)
+        
+     } )
+     
+     console.log("after query", result)
+     res.status(200).json(result)
+ })
+
 
 // this is our first POST endpoint
 testRouter.post('/post', (req, res) => {
