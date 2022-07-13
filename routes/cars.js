@@ -54,7 +54,7 @@ carRouter.put('/update', (req,res) =>{
     odometer = req.body.odometer
     model = req.body.model
     body = req.body
-    queryStatement = `UPDATE  cars SET make = '${make}', model = '${model}', year = ${year} , odometer = ${odometer} RETURNING *;`
+    queryStatement = `UPDATE  cars SET make = '${make}', model = '${model}', year = ${year} , odometer = ${odometer} WHERE car_id = ${carId} RETURNING *;`
     console.log(queryStatement)
     databaseCall(queryStatement, req, res)
 })
