@@ -26,6 +26,16 @@ carRouter.get('/:carId', (req,res) => {
     databaseCall(queryStatement, req, res)
 })
 
+// READ CAR WITH CARID
+carRouter.get('/user/:carId', (req,res) => {
+    queryStatement = `SELECT * FROM cars
+    INNER JOIN users ON cars.user_id = users.user_id WHERE car_id = '${req.params.carId}';`
+    
+
+    console.log(queryStatement)
+    databaseCall(queryStatement, req, res)
+})
+
 // DELETE CAR WITH CARID
 carRouter.delete('/:carId', (req,res) => {
     queryStatement = `DELETE FROM cars WHERE car_id = '${req.params.carId}' RETURNING *;`
@@ -53,8 +63,9 @@ carRouter.put('/update', (req,res) =>{
     year = req.body.year
     odometer = req.body.odometer
     model = req.body.model
+    userId = req.body.userId
     body = req.body
-    queryStatement = `UPDATE  cars SET make = '${make}', model = '${model}', year = ${year} , odometer = ${odometer} WHERE car_id = ${carId} RETURNING *;`
+    queryStatement = `UPDATE  cars SET make = '${make}', model = '${model}', year = ${year} , odometer = ${odometer}, user_id = '${userId}' WHERE car_id = '${carId}' RETURNING *;`
     console.log(queryStatement)
     databaseCall(queryStatement, req, res)
 })
