@@ -11,12 +11,12 @@ userRouter.get('/all', (req,res) => {
    
 })
 
-// READ USER WITH CARID
+// READ USER WITH USERID
 carRouter.get('/:userId', (req,res) => {
    
 })
 
-// DELETE USER WITH CARID
+// DELETE USER WITH USERID
 userRouter.delete('/:userId', (req,res) => {
     
 })
