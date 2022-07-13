@@ -4,11 +4,12 @@ const app = express()
 const port = 3000
 const testRouter = require('./routes/tests')
 const carRouter = require('./routes/cars')
-
+const userRouter = require('./routes/users')
 
 
 app.use('/tests', testRouter); 
 app.use('/cars', carRouter); 
+app.use('/users', userRouter);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
