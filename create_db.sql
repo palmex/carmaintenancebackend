@@ -1,3 +1,5 @@
+CREATE EXTENSION "uuid-ossp";
+
 CREATE TABLE cars(
     car_id         UUID DEFAULT uuid_generate_v4(),
     make           text,

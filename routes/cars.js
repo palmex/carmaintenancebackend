@@ -45,6 +45,7 @@ carRouter.delete('/:carId', (req,res) => {
 
 // CREATE CAR
 carRouter.post('/new', (req,res) =>{
+    console.log("hello")
     console.log(req.body)
     make = req.body.make
     year = req.body.year
@@ -52,6 +53,7 @@ carRouter.post('/new', (req,res) =>{
     model = req.body.model
     body = req.body
     queryStatement = `INSERT INTO cars (make, model, year, odometer) VALUES ('${make}','${model}',${year} ,${odometer} ) RETURNING *;`
+    console.log(queryStatement)
     databaseCall(queryStatement, req, res)
 })
 
@@ -85,7 +87,10 @@ const databaseCall = (queryStatement, request, res) => {
         if (error){
             res.status(500).json(error) 
         } else
-        {res.status(200).json(results.rows)}
+        {
+            console.log(results.rows)
+            res.status(200).json(results.rows)
+        }
         
     } )
 }
